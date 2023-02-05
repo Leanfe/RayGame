@@ -11,3 +11,9 @@ You can find the implementation of some functionality here, like buttons and mor
 - [X] Animation for text.
 - [X] Class for calculating the base coordinates for the center.
 
+## In process 📐:
+
+- [ ] Buttons.
+- [ ] File support.
+- [ ] Saves.
+- [ ] Scenes.
