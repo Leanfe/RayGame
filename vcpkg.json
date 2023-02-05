@@ -1,0 +1,9 @@
+{
+  "name" : "raygame",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "0ba60bfef5dea4cb2599daa7ad8364e309835a68",
+  "dependencies" : [ {
+    "name" : "raylib",
+    "version>=" : "4.2.0#1"
+  } ]
+}
