@@ -13,7 +13,7 @@ You can find the implementation of some functionality here, like buttons and mor
 
 ## In process 📐:
 
-- [ ] Buttons.
+- [X] Buttons.
 - [ ] File support.
 - [ ] Saves.
 - [ ] Scenes.
