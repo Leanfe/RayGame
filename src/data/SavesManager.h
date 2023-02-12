@@ -7,7 +7,6 @@
 #include <string>
 #include <fstream>
 #include <filesystem>
-#include <minwindef.h>
 #include <processenv.h>
 
 #ifndef RAYGAME_SAVEMANAGER_H
@@ -15,18 +14,18 @@
 
 namespace Saves {
 
-    class SaveManager {
+    class SavesManager {
     private:
         class SaveHelper {
         public:
-            // Saves data to a file
+            /** Saves data to a file */
             static void Save(const std::string& fileName, const void* data, int dataSize) {
                 std::ofstream file(fileName, std::ios::binary);
                 file.write((const char*)data, dataSize);
                 file.close();
             }
 
-            // Loads data from a file
+            /** Loads data from a file */
             static void Load(const std::string& fileName, void* data, int dataSize) {
                 std::ifstream file(fileName, std::ios::binary);
                 file.read((char*)data, dataSize);
@@ -38,7 +37,7 @@ namespace Saves {
         std::string saveFolder;
 
     public:
-        explicit SaveManager(const std::string& folderName) {
+        explicit SavesManager(const std::string& folderName) {
             // Get the AppData folder path
             char appDataPath[MAX_PATH];
             GetEnvironmentVariable("APPDATA", appDataPath, MAX_PATH);
@@ -50,14 +49,14 @@ namespace Saves {
             }
         }
 
-        // Saves data to the saves folder
+        /** Saves data to the saves folder */
         void Save(const std::string& fileName, const void* data, int dataSize) {
-            Saves::SaveManager::SaveHelper::Save(saveFolder + fileName, data, dataSize);
+            Saves::SavesManager::SaveHelper::Save(saveFolder + fileName, data, dataSize);
         }
 
-        // Loads data from the saves folder
+        /** Loads data from the saves folder */
         void Load(const std::string& fileName, void* data, int dataSize) {
-            Saves::SaveManager::SaveHelper::Load(saveFolder + fileName, data, dataSize);
+            Saves::SavesManager::SaveHelper::Load(saveFolder + fileName, data, dataSize);
         }
     };
 

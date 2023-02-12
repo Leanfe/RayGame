@@ -40,7 +40,8 @@ namespace UI {
     bool Button::handleClick() const
     {
         Vector2 mouse = GetMousePosition();
-        if (CheckCollisionPointRec(mouse, (Rectangle){static_cast<float>(x), static_cast<float>(y), static_cast<float>(width), static_cast<float>(height)})) {
+
+        if (CheckCollisionPointRec(mouse, { static_cast<float>(x), static_cast<float>(y), static_cast<float>(width), static_cast<float>(height) })) {
             if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
                 return true;
             }
