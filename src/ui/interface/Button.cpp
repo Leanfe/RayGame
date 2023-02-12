@@ -9,19 +9,30 @@
 namespace UI {
     // StyledButton.cpp
 
-    Button::Button(const char *text, int fontSize, int x, int y, int width, int height)
-            : text(text), fontSize(fontSize), x(x), y(y), width(width), height(height), textColor(BLACK), backgroundColor(GRAY)
-    {
+    /**
+     *  takes a string input as an argument and returns the corresponding hexadecimal value as an integer.
+     * @param input string.
+     * @return corresponding hexadecimal value as an integer
+     */
+    int strToHex(const std::string& input) {
+        int result;
+        std::stringstream ss;
+        ss << std::hex << input;
+        ss >> result;
+        return result;
     }
+
+    Button::Button(const char *text, int fontSize, int x, int y, int width, int height)
+            : text(text), fontSize(fontSize), x(x), y(y), width(width), height(height), textColor(BLACK), backgroundColor(GRAY) {}
 
     void Button::applyStyles(const std::map<std::string, std::string>& styles)
     {
         for (const auto &style : styles) {
             if (style.first == "color") {
-                textColor = GetColor(style.second.c_str());
+                textColor = GetColor(strToHex(style.second));
             }
             else if (style.first == "background-color") {
-                backgroundColor = GetColor(style.second.c_str());
+                backgroundColor = GetColor(strToHex(style.second));
             }
         }
     }
@@ -41,16 +52,6 @@ namespace UI {
     {
         DrawRectangle(x, y, width, height, backgroundColor);
         DrawText(text, x + width / 2 - MeasureText(text, fontSize) / 2, y + height / 2 - fontSize / 2, fontSize, textColor);
-    }
-
-
-    int strToHex(std::string input)
-    {
-        int result;
-        std::stringstream ss;
-        ss << std::hex << input;
-        ss >> result;
-        return result;
     }
 
 } // UI
